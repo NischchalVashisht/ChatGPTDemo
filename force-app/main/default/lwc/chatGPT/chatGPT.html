@@ -1,0 +1,52 @@
+<template>
+	<div class="slds-card slds-scrollable  slds-float_left" style ="width: 450px;">
+		<header class="slds-card__header slds-grid">
+			<div class="slds-media slds-media_center slds-has-flexi-truncate">
+				<div class="slds-media__figure">
+					<img src={imageUrl} width="50" height="50" alt="Avatar" />
+				</div>
+				<div class="slds-media__body">
+					<h2 class="slds-card__header-title">
+						<a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="Card Title">
+							ChatGpt
+						</a>
+					</h2>
+					<p class="slds-card__header-subtitle slds-truncate" title="Card Subtitle">Query your doubts</p>
+				</div>
+			</div>
+		</header>
+		<div class="scrollable-content slds-card__body slds-card__body_inner ">
+			<template if:true={responseData}>
+				<lightning-formatted-rich-text disable-linkify value={responseData}></lightning-formatted-rich-text>
+			</template>
+			<template if:true={showSpace}>
+				<br/>
+				<br/>
+				<br/>
+			</template>
+			<template if:true={showSpinner}>
+				<lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+			</template>		
+		</div>
+		<footer class="slds-card__footer">
+			<div class="slds-form-element">
+				<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+					<input type="text" id="search-input-footer" class="slds-input" placeholder="Enter search term" onkeydown={handleKeyDown} />
+					 <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right multi-select-combobox__icon"
+                		   title="Click to open the dropdown"
+              		 ><div class="slds-p-left_xx-small">
+                		<lightning-icon
+                  			icon-name="utility:right"
+                  			size="xx-small"
+                  			alternative-text="Click here"
+                  			class="slds-icon slds-icon--selected slds-icon--x-small slds-icon-text-default"
+                  
+                		>
+                		</lightning-icon>
+                	</div>
+                  </span>
+				</div>
+			</div>
+		</footer>
+	</div>
+</template>
