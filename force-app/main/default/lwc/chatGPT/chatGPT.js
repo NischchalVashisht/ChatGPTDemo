@@ -31,7 +31,7 @@ export default class ChatGPT extends LightningElement {
                     tempScriptData = (response.choices[0].text.includes('<script>')) ? 'JS File: ' + response.choices[0].text.split('<script>')[1] : '';
                     tempScriptData = tempScriptData.replace(/\n/g, "<br />");
 
-                    this.responseData = this.responseData + this.responseTextLWCJS;
+                    this.responseData = this.responseData + tempScriptData;
                     this.responseData = (this.responseData.includes('XML File:')) ? this.responseData.split('XML File:')[0] : this.responseData;
 
                     this.responseData.trim();
